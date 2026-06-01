@@ -206,7 +206,7 @@ def second():
         message["From"] = sender_email
         message["To"] = receiver_email
         text = """\
-        Hi,
+        Hii,
         How are you?
         contact me on icq jamescartwright for your fud pages
         """
